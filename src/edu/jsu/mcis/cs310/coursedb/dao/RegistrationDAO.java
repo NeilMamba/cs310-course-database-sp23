@@ -9,8 +9,10 @@ import java.sql.Statement;
 public class RegistrationDAO {
     
     // INSERT YOUR CODE HERE
-    
-    private final DAOFactory daoFactory;
+   private static final String CREATE = " INSERT INTO registration (studentid, termid, crn) VALUES (?,?,?) "; 
+   private static final String DELETE = " DELETE FROM registration WHERE studentid = ? AND termid = ? AND crn = ?";
+   private static final String QUERY_LIST = "";
+   private final DAOFactory daoFactory;
     
     RegistrationDAO(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
@@ -30,7 +32,14 @@ public class RegistrationDAO {
             if (conn.isValid(0)) {
                 
                 // INSERT YOUR CODE HERE
-                
+            ps = conn.prepareStatement(CREATE);
+            ps.setInt(1,studentid);
+            ps.setInt(2,termid);
+            ps.setInt(3,crn);
+            int executeUpdate = ps.executeUpdate();
+            if (executeUpdate > 0){
+                result = true;
+            }
             }
             
         }
@@ -61,8 +70,16 @@ public class RegistrationDAO {
             if (conn.isValid(0)) {
                 
                 // INSERT YOUR CODE HERE
-                
+            ps = conn.prepareStatement(DELETE);
+            ps.setInt(1,studentid);
+            ps.setInt(2,termid);
+            ps.setInt(3,crn);
+            int executeUpdate = ps.executeUpdate();
+            if (executeUpdate > 0){
+                result = true;
             }
+            }
+            
             
         }
         
@@ -91,7 +108,8 @@ public class RegistrationDAO {
             if (conn.isValid(0)) {
                 
                 // INSERT YOUR CODE HERE
-                
+
+    
             }
             
         }
@@ -123,7 +141,22 @@ public class RegistrationDAO {
             if (conn.isValid(0)) {
                 
                 // INSERT YOUR CODE HERE
+            ps = conn.prepareStatement(QUERY_LIST);
                 
+                boolean hasresults = ps.execute();
+                
+                if (hasresults) {
+
+                    rs = ps.getResultSet();
+
+                    while(rs.next()) {
+                        
+                        ps = conn.prepareStatement(QUERY_LIST);
+                        ps.setInt(1,studentid);
+                        ps.setInt(2,termid);
+                        ps.setInt(3,crn);
+                        Person p = new Person(id, firstname, lastname);
+                        results.add(p);    
             }
             
         }
