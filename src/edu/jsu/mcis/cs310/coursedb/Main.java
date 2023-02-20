@@ -8,10 +8,21 @@ public class Main {
         
         DAOFactory daoFactory = new DAOFactory("coursedb");
         
+        // TEST - delete later
+        SectionDAO d = daoFactory.getSectionDAO();
+
+      // SectionDAO d = new SectionDAO(daoFactory);
+       //System.out.println(d.find(1, "002", "113"));
+        
+        // TEST END
+        
         if ( !daoFactory.isClosed() ) {
             System.out.println("Connected Successfully!");
         }
-        
-    }
-    
+            System.out.println(d.find(1, "CS", "201"));
+
 }
+}
+
+
+    

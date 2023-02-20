@@ -8,7 +8,7 @@ public final class DAOFactory {
     private static final String PROPERTY_DRIVER = "driver";
     private static final String PROPERTY_USERNAME = "username";
     private static final String PROPERTY_PASSWORD = "password";
-    
+    //cs310_p2_user'@'localhost'
     private final String url, username, password;
     private Connection conn;
     

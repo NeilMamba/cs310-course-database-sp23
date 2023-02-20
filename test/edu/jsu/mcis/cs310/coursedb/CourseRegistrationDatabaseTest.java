@@ -7,7 +7,7 @@ import com.github.cliftonlabs.json_simple.*;
 
 public class CourseRegistrationDatabaseTest {
 
-    private static final String USERNAME = "jsnellen"; // replace this with your own account name!
+    private static final String USERNAME = "NeilMamba"; // replace this with your own account name!
     
     private DAOFactory daoFactory;
     private RegistrationDAO registrationDao;
@@ -126,7 +126,7 @@ public class CourseRegistrationDatabaseTest {
                 boolean result = registrationDao.create(studentid, DAOUtility.TERMID_SP23, crn[i]);
 
                 // compare number of updated records
-
+             
                 assertTrue(result);
 
             }
